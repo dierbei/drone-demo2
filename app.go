@@ -8,7 +8,7 @@ func main() {
 		c.JSON(200, gin.H{
 			"name":     "hedui",
 			"age":      23,
-			"describe": "from FuJian Province",
+			"describe": "from fujian province",
 			"hobby":    "simple is better",
 			"dream": "wait...",
 		})
