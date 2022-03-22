@@ -10,6 +10,7 @@ func main() {
 			"age":      23,
 			"describe": "from FuJian Province",
 			"hobby":    "simple is better",
+			"dream": "wait...",
 		})
 	})
 	r.Run(":8085")
