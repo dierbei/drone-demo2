@@ -1,0 +1,41 @@
+kind: pipeline
+type: docker
+name: build
+steps:
+  - name: build
+    image: alpine:3.12
+    pull: if-not-exists # always never
+    environment:
+      KEY: VALUE
+    commands:
+      - echo $KEY
+      - pwd
+      - ls
+
+  - name: publish
+    image: plugins/docker
+    settings:
+      dockerfile: Dockerfile
+      repo: dierbei/drone-demo
+      tags: latest
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+
+  - name: deploy
+    image: appleboy/drone-ssh
+    settings:
+      host: 175.24.198.168
+      username: xiaolatiao
+      password: czc19990402.
+      port: 22
+      command_timeout: 300s
+      script:
+        - docker pull dierbei/drone-demo:latest
+        - docker rm -f drone-demo || true
+        - docker run -d -p 8085:8085 --name drone-demo dierbei/drone-demo:latest
+
+trigger:
+  branch:
+    - master
