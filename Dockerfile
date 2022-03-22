@@ -10,6 +10,7 @@ ENV GOPROXY=https://goproxy.cn,direct
 COPY . $GOPATH/src
 
 # RUN 执行 go build .
+RUN pwd && ls
 RUN cd $GOPATH/src && go build .
 
 # FROM 基于 alpine:latest
