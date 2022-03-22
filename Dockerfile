@@ -4,7 +4,7 @@ FROM golang:1.17-alpine AS builder
 # ENV 设置环境变量
 ENV GOPATH=/opt/repo
 ENV GO111MODULE=on
-ENV GOPROXY=https://goproxy.cn,direct
+ENV GOPROXY=https://goproxy.io,direct
 
 # COPY 源路径 目标路径
 COPY . $GOPATH/src
