@@ -11,7 +11,7 @@ COPY . $GOPATH/src
 
 # RUN 执行 go build .
 RUN go env
-RUN cd $GOPATH/src && go build .
+RUN cd $GOPATH/src && pwd && ls && go build .
 
 # FROM 基于 alpine:latest
 FROM alpine:latest
