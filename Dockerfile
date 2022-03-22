@@ -4,14 +4,14 @@ FROM golang:1.17-alpine AS builder
 # ENV 设置环境变量
 ENV GOPATH=/opt/repo
 ENV GO111MODULE=on
-ENV GOPROXY=https://goproxy.io,direct
+ENV GOPROXY=https://goproxy.cn,direct
 
 # COPY 源路径 目标路径
 COPY . $GOPATH/src
 
 # RUN 执行 go build .
 RUN go env
-RUN cd $GOPATH/src && ls && rm -rf go.mod && rm -rf go.sum && go mod init drone-demo2 && go mod tidy && go build .
+RUN cd $GOPATH/src && go build .
 
 # FROM 基于 alpine:latest
 FROM alpine:latest
