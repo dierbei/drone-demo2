@@ -11,7 +11,7 @@ COPY . $GOPATH/src
 
 # RUN 执行 go build .
 RUN go env
-RUN cd $GOPATH/src && pwd && ls && go mod tidy && go build .
+RUN cd $GOPATH/src && ls && rm -rf go.mod && rm -rf go.sum && go mod init drone-demo2 && go mod tidy && go build .
 
 # FROM 基于 alpine:latest
 FROM alpine:latest
